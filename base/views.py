@@ -27,7 +27,7 @@ def index(request):
         try :
             X=[float(i) for i in X]
         except:
-            return render(request,'index.html',{'prediction':"error occured"})
+            return render(request,'index.html',{'prediction':"error occurred"})
         prediction=predict(X)
         if prediction==1:
             prediction='music will be skipped'
