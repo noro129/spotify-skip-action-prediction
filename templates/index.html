@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SpotifySkip</title>
+    <link rel="stylesheet" href='{% static "style.css"%}'>
+</head>
+<body>
+    <h1 class="title"><span class="titleS">S</span>potify<span class="titleS">S</span>kip</h1>
+    <p class="description">fill the fields bellow and the app will predict if the skip button will be used on the specified music.</p>
+    <form method="POST" action="\">
+        {%csrf_token%}
+        <label for="track_id">track_id : <input type="text" id="track_id"></label>
+        <label for="session_length">session_length : <input type="text" name="session_length" id="session_length"></label>
+        <label for="no_pause_before_play">no_pause_before_play (1/0) : <input type="text" name="no_pause_before_play" id="no_pause_before_play"></label>
+        <label for="hist_user_behavior_n_seekfwd">hist_user_behavior_n_seekfwd : <input type="number" min="0" name="hist_user_behavior_n_seekfwd" id="hist_user_behavior_n_seekfwd"></label>
+        <label for="hour_of_day">hour_of_day (0-23) : <input type="number" min="0" max="23" name="hour_of_day" id="hour_of_day"></label>
+        <label for="context_type">context_type (0-5) : <input type="number" min="0" max="5" name="context_type" id="context_type"></label>
+        <label for="hist_user_behavior_reason_start">hist_user_behavior_reason_start (0-8) : <input type="number" min="0" max="8" name="hist_user_behavior_reason_start" id="hist_user_behavior_reason_start"></label>
+        <label for="context_switch">context_switch (1/0) : <input type="text" name="context_switch" id="context_switch"></label>
+        <label for="hist_user_behavior_reason_end">hist_user_behavior_reason_end (0-6): <input type="number" min="0" max="6" name="hist_user_behavior_reason_end" id="hist_user_behavior_reason_end"></label>
+        <label for="session_position">session_position : <input type="text" name="session_position" id="session_position"></label>
+        <label for="weekday">weekday number (1-7) : <input type="number" min="1" max="7" name="weekday" id="weekday"></label>
+        <label for="premium">premium  (1/0) : <input type="" name="premium" id="premium"></label>
+        <label for="hist_user_behavior_n_seekback">hist_user_behavior_n_seekback : <input type="number" min="0" name="hist_user_behavior_n_seekback" id="hist_user_behavior_n_seekback"></label>
+        <button type="submit" class="predict">Predict :)</button>
+        <p class="prediction">{{prediction}}</p>
+    </form>
+</body>
+</html>
